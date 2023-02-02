@@ -1,7 +1,7 @@
-# 🪦Welcome to the Bomb.money ecosystem🪦
-
-Thanks for taking the time to contribute!
-You can start by reading our [Contribution guidelines](CONTRIBUTING.md) first.
+# Himanshu Goyal(20JE0420) IIT Dhanbad - TASK (Bomb Dashboard)
+- [LinkdIn](https://www.linkedin.com/in/himanshu-goyal-a971941bb/) 
+- Email : 20je0420@ee.iitism.ac.in 
+- Phone : +91-7412972658
 
 ## Setup
 
@@ -20,6 +20,11 @@ You can reformat the project by running
 npx prettier --write .
 ```
 
+## Steps (Himanshu Goyal)
+1. first of all I added one route dashboard in the react app
+2. Now developing the ui with styled components and displaying the total supply , current supply and price in usd using hooks.
+3. Writing the nFormatter function to display the fomated version of total supply and current supply of token
+
 ## Project structure
 
 - **components** contains generic components used inside the application.
@@ -31,7 +36,6 @@ npx prettier --write .
 - **utils** contains generic utilities functions.
 
 ## Useful Resources
-
 - [Our project documentation](https://docs.bomb.money/) will help you understand before start contributing
 - Join our [Discord](https://discord.bomb.money) community
 - Or if you are more of a [Telegram Zombie](https://t.me/bombmoneybsc) we have that too
