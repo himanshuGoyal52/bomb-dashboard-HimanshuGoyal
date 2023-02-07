@@ -19,7 +19,6 @@ const useTotalStakedOnBoardroom = () => {
     }
     fetchTotalStaked();
   }, [isUnlocked, slowRefresh, bombFinance]);
-
   return totalStaked;
 };
 

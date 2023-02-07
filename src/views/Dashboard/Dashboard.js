@@ -2,6 +2,7 @@ import Summary from "./Summary";
 import React from 'react';
 import styled from "styled-components";
 import Back from "../../assets/img/Back.jpg";
+import Invest from "./Invest";
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -22,6 +23,7 @@ function App() {
       <MainContainer>
         <Box>
           <Summary />
+          <Invest />
         </Box>
       </MainContainer>
     </>

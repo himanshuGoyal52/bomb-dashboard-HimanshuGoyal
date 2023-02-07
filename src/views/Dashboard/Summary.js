@@ -2,6 +2,15 @@ import React, { useMemo } from 'react'
 import useBombStats from '../../hooks/useBombStats';
 import useShareStats from '../../hooks/usebShareStats';
 import useBondStats from '../../hooks/useBondStats';
+import useTotalValueLocked from '../../hooks/useTotalValueLocked';
+import useCurrentEpoch from '../../hooks/useCurrentEpoch';
+
+// import useTotalStakedOnBoardroom from '../../hooks/useTotalStakedOnBoardroom';
+// import useEarningsOnBoardroom from '../../hooks/useEarningsOnBoardroom';
+// import useStakedBalanceOnBoardroom from '../../hooks/useStakedBalanceOnBoardroom';
+// import useFetchBoardroomAPR from '../../hooks/useFetchBoardroomAPR';
+// import useWithdrawFromBoardroom from '../../hooks/useWithdrawFromBoardroom';
+
 import { nFormatter } from '../../utils/numberFormatter';
 import styled from "styled-components";
 // import useShareStatss from '../../hooks/usetShareStats';
@@ -130,7 +139,6 @@ const Table = styled.table`
 
 const Summary =  () => {
     const bombStats =  useBombStats();
-    console.log(bombStats);
     const priceInDollars_BOMB = useMemo(
         () => (bombStats ? Number(bombStats.priceInDollars).toFixed(2) : null),
         [bombStats],
@@ -145,7 +153,6 @@ const Summary =  () => {
     )
     /******************************************************************************************/
     const bShareStats = useShareStats();
-    console.log(bShareStats);
     const priceInDollars_bShare = useMemo(
         () => (bShareStats ? Number(bShareStats.priceInDollars).toFixed(2) : null),
         [bShareStats],
@@ -172,10 +179,21 @@ const Summary =  () => {
         () => (bondStats ? Number(bondStats.circulatingSupply).toFixed(2) : null),
         [bondStats],
     );
+    /******************************************************************************************/
+    const currentEpochStats = useCurrentEpoch();
+    const currentEpochNum = parseInt(currentEpochStats._hex , 16);
+    const tvl = useTotalValueLocked().toFixed(2);
+
+    /************* Board Room ************/
+    // const totalStakedOnBoardroom = parseInt(useTotalStakedOnBoardroom()._hex,16).toFixed(2);
+    // const earningsOnBoardroom = parseInt(useEarningsOnBoardroom()._hex,16);
+    // const StakedBalanceOnBoardroom = parseInt(useStakedBalanceOnBoardroom()._hex,16);
+    // const arpStatsBoardroom = (useFetchBoardroomAPR()/100).toFixed(2);
+      
 
   return (
       <>
-            <MainContainer>
+        <MainContainer>
         <Heading>Bomb Finance Summary</Heading>
         <Container>
           <LeftSection>
@@ -260,7 +278,7 @@ const Summary =  () => {
           <RightSection>
             <Epoch>
               <p>Current Epoch</p>
-              <h1>258</h1>
+              <h1>{currentEpochNum}</h1>
             </Epoch>
             <NextEpoch>
               <h1>03:38:36</h1>
@@ -268,16 +286,13 @@ const Summary =  () => {
             </NextEpoch>
             <Stats>
               <p>Live TWAP: <span style={{color : "rgba(0, 232, 162, 1)"}}>1.17</span></p>
-              <p>TVL: <span style={{color : "rgba(0, 232, 162, 1)"}}>$5,002,412</span></p>
+              <p>TVL: <span style={{color : "rgba(0, 232, 162, 1)"}}>${tvl}</span></p>
               <p>Last Epoch TWAP: <span style={{color : "rgba(0, 232, 162, 1)"}}>1.22</span></p>
             </Stats>
           </RightSection>
         </Container>
       </MainContainer>
-
-
-        
-
+      
       </>
   )
 }
