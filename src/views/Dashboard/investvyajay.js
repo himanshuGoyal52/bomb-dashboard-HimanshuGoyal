@@ -1,68 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import useTotalStakedOnBoardroom from '../../hooks/useTotalStakedOnBoardroom';
-import useEarningsOnBoardroom from '../../hooks/useEarningsOnBoardroom';
-import useStakedBalanceOnBoardroom from '../../hooks/useStakedBalanceOnBoardroom';
-import useFetchBoardroomAPR from '../../hooks/useFetchBoardroomAPR';
-import useWithdrawFromBoardroom from '../../hooks/useWithdrawFromBoardroom';
-import useWithdrawCheck from '../../hooks/boardroom/useWithdrawCheck';
-import useStakeToBoardroom from '../../hooks/useStakeToBoardroom';
-import useRedeemOnBoardroom from '../../hooks/useRedeemOnBoardroom';
-import useClaimRewardCheck from '../../hooks/boardroom/useClaimRewardCheck';
-
-// const Invest = () => {
-
-//     /************* Board Room ************/
-//     const totalStakedOnBoardroom = parseInt(useTotalStakedOnBoardroom()._hex,16).toFixed(2);
-//     const earningsOnBoardroom = parseInt(useEarningsOnBoardroom()._hex,16);
-//     const StakedBalanceOnBoardroom = parseInt(useStakedBalanceOnBoardroom()._hex,16);
-//     const arpStatsBoardroom = (useFetchBoardroomAPR()/100).toFixed(2);
-
-//     let withdrawCheck = useWithdrawCheck();
-//     let claimRewardCheck = useClaimRewardCheck();
-
-//     return (
-//         <>
-//             <div className='invest_container'>
-//                 <div className='Boardroom_container'>
-//                     <p>Read Invesment stratergy</p>
-//                     <div className='invest_button'>Invest Now</div>
-//                     <div>
-//                         <div>
-//                             Chat on Discord
-//                         </div>
-//                         <div>
-//                             Read Docs
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div>
-
-//                 </div>
-//             </div>
-//             <div>
-//                 <p>BoardRoom</p>
-//                 <p>total staked : {totalStakedOnBoardroom}</p>
-//                 <p>your earnings : {earningsOnBoardroom}</p>
-//                 <p>staked bshare : {StakedBalanceOnBoardroom}</p>
-//                 <p>ARP Stats : {arpStatsBoardroom}%</p>
-//                 {
-//                     withdrawCheck ? <button onClick={() => useWithdrawFromBoardroom}>Withdraw</button> : 
-//                     <button >Withdraw</button>
-//                 }
-//                 <button onClick={() => useStakeToBoardroom}>Deposite</button>
-//                 {
-//                     claimRewardCheck ? <button onClick={() => useRedeemOnBoardroom}>Claim Rewards</button> : 
-//                     <button>Claim Rewards</button>
-//                 }                
-//             </div>
-//         </>
-//     )
-// }
-
-import bomb from '../../assets/img/bomb-200x200.png';
-import bshares from "../../assets/img/bshare-200x200.png";
-
+import React from "react";
+import styled from "styled-components";
+import bomb from "../images/bomb.png";
+import bshares from "../images/bshares.png";
 const MainContainer = styled.div`
   color: white;
   display: grid;
@@ -135,17 +74,7 @@ margin-top: 0.5em;
 border-radius: 10px;
 margin-left: 1em;
 `;
-
-const Invest = () =>  {
-    /************* Board Room ************/
-    const totalStakedOnBoardroom = parseInt(useTotalStakedOnBoardroom()._hex,16).toFixed(2);
-    const earningsOnBoardroom = parseInt(useEarningsOnBoardroom()._hex,16);
-    const StakedBalanceOnBoardroom = parseInt(useStakedBalanceOnBoardroom()._hex,16);
-    const arpStatsBoardroom = (useFetchBoardroomAPR()/100).toFixed(2);
-
-    let withdrawCheck = useWithdrawCheck();
-    let claimRewardCheck = useClaimRewardCheck();
-
+function invest() {
   return (
     <>
       <MainContainer>
@@ -165,7 +94,7 @@ const Invest = () =>  {
             <button style={{ marginRight: "10px" }}>Chat on Discord</button>
             <button style={{ marginLeft: "10px" }}>Read Docs</button>
           </div>
-          <div style={{border: "1px solid rgba(114, 140, 223, 1)" , marginTop : "0.5em" , borderRadius: "10px" , height: "234px"}}>
+          <div style={{border: "1px solid rgba(114, 140, 223, 1)" , marginTop : "0.5em" , borderRadius: "10px" , height: "200px"}}>
             <div
               className="main"
               style={{
@@ -221,7 +150,7 @@ const Invest = () =>  {
                     style={{ height: "15px", width: "15px" }}
                     alt=""
                   />
-                  {totalStakedOnBoardroom}
+                  7232
                 </p>
               </div>
             </div>
@@ -235,17 +164,17 @@ const Invest = () =>  {
             >
               <div className="returns">
                 <p>Daily Returns:</p>
-                <p style={{ fontSize: "1.4em" }}>{arpStatsBoardroom}%</p>
+                <p style={{ fontSize: "1.4em" }}>2%</p>
               </div>
               <div className="stake">
-                <p>Your Stake: {' '}</p>
+                <p>Your Stake:</p>
                 <p>
                   <img
                     src={bshares}
                     style={{ height: "15px", width: "15px" }}
                     alt=""
                   />{" "}
-                  {StakedBalanceOnBoardroom}
+                  6,000
                 </p>
                 <p>= $1171.62</p>
               </div>
@@ -257,44 +186,26 @@ const Invest = () =>  {
                     style={{ height: "15px", width: "15px" }}
                     alt=""
                   />{" "}
-                  {earningsOnBoardroom}
+                  1660.4113
                 </p>
                 <p>= $298.88</p>
               </div>
               <div className="buttons">
-                <button onClick={() => useStakeToBoardroom} className="btn">
+                <button className="btn">
                   Deposit
                   <i class="bx bx-up-arrow-alt"></i>
                 </button>
-                {
-                    withdrawCheck ? 
-                    <button onClick={() => useWithdrawFromBoardroom} className="btn" >
-                        Withdraw<i class="bx bx-down-arrow-alt"></i>
-                    </button> : 
-                    <button  className="btn" >
-                        Withdraw<i class="bx bx-down-arrow-alt"></i>
-                    </button>
-                }
-                {
-                    claimRewardCheck ? 
-                    <button onClick={() => useRedeemOnBoardroom} className="btn2">
-                        Claim Rewards{" "}
-                        <img
-                          src={bshares}
-                          style={{ height: "15px", width: "15px" }}
-                          alt=""
-                        />
-                    </button>
-                    : 
-                    <button className="btn2">Claim Rewards{" "}
-                        <img
-                          src={bshares}
-                          style={{ height: "15px", width: "15px" }}
-                          alt=""
-                        />
-                    </button>
-                }  
-                
+                <button className="btn">
+                  Withdraw<i class="bx bx-down-arrow-alt"></i>
+                </button>
+                <button className="btn2">
+                  Claim Rewards{" "}
+                  <img
+                    src={bshares}
+                    style={{ height: "15px", width: "15px" }}
+                    alt=""
+                  />
+                </button>
               </div>
             </div>
           </div>
@@ -307,4 +218,4 @@ const Invest = () =>  {
   );
 }
 
-export default Invest;
+export default invest;
