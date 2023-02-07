@@ -25,6 +25,7 @@ npx prettier --write .
 2. Now developing the ui with styled components and displaying the total supply , current supply and price in usd using hooks.
 3. Writing the nFormatter function to display the fomated version of total supply and current supply of token.
 4. Developing the Invest.js component with all functions implemented by hooks and ui with the help of styled components.
+5. Now the whole UI is ready only to add the variables and hooks in the bomb farms and bonds.
 
 ## Project structure
 
