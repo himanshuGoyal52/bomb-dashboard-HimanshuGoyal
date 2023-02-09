@@ -21,7 +21,7 @@ npx prettier --write .
 ```
 
 ## Steps (Himanshu Goyal)
-1. first of all I added one route dashboard in the react app
+1. First of all I added one route dashboard in the react app by adding the folder dashboard in src/views.
 2. Now developing the ui with styled components and displaying the total supply , current supply and price in usd using hooks.
 3. Writing the nFormatter function to display the fomated version of total supply and current supply of token.
 4. Developing the Invest.js component with all functions implemented by hooks and ui with the help of styled components.

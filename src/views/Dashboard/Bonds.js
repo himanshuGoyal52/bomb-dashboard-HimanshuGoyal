@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import bomb from "../../assets/img/bbond.png";
+import useBondsPurchasable from "../../hooks/useBondsPurchasable";
+// import useBondStats from "../../hooks/useBondStats";
+
 const Container = styled.div`
   font-family: "Nunito", sans-serif;
   color: white;
@@ -18,6 +21,7 @@ const Container2 = styled.div`
     height: 30px;
     font-size: 0.9em;
     margin: 0px 5px;
+    cursor : pointer;
   }
   .box1::after {
     position: absolute;
@@ -31,6 +35,10 @@ const Container2 = styled.div`
   }
 `;
 function Bonds() {
+  let availablePurchasable = useBondsPurchasable();
+  // let bondPrice = useBondStats().priceInDollars;
+  let bondPrice = 45;
+
   return (
     <>
       <Container style={{ marginBottom : '30px', marginTop : "14px" , padding: "0 15px 15px 15px" , background : "rgba(35, 40, 75, 0.75)" , borderRadius: "10px" , border : "1px solid rgba(114, 140, 223, 1)"}}>
@@ -52,7 +60,7 @@ function Bonds() {
         >
           <div className="price" style={{marginTop : "10px"}}>
             <p>Current Price: (Bomb)^2</p>
-            <p style={{ fontSize: "1.5em" , marginTop : "20px"}}>BBond = 6.2872 BTCB</p>
+            <p style={{ fontSize: "1.5em" , marginTop : "20px"}}>BBond = {bondPrice} BTCB</p>
           </div>
           <div className="redeem" style={{marginTop : "10px"}}>
             <p>Available to redeem:</p>
@@ -62,7 +70,7 @@ function Bonds() {
                 alt=""
                 style={{ height: "40px", width: "40px" }}
               />
-              456
+              {availablePurchasable}
             </p>
           </div>
           <div className="bbond" style={{ position: "relative" }}>

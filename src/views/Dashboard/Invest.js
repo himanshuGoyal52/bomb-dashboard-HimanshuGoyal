@@ -59,6 +59,7 @@ const LeftContainer = styled.div`
       height: 30px;
       font-size: 0.9em;
       margin: 0px 5px;
+      cursor : pointer;
     }
     .btn2 {
       color: white;
@@ -69,6 +70,7 @@ const LeftContainer = styled.div`
       height: 30px;
       margin-top: 10px;
       font-size: 0.9em;
+      cursor : pointer;
     }
     i {
       color: green;
@@ -94,6 +96,10 @@ const Invest = () =>  {
 
     let withdrawCheck = useWithdrawCheck();
     let claimRewardCheck = useClaimRewardCheck();
+
+    const depositFunc = useStakeToBoardroom().onStake;
+    const withdrawFunc = useWithdrawFromBoardroom().onWithdraw;
+    const redeemFunc = useRedeemOnBoardroom().onRedeem;
 
   return (
     <>
@@ -196,7 +202,7 @@ const Invest = () =>  {
                   />{" "}
                   {StakedBalanceOnBoardroom}
                 </p>
-                <p>= $1171.62</p>
+                <p>= $0.00</p>
               </div>
               <div className="earned">
                 <p>Earned:</p>
@@ -211,13 +217,13 @@ const Invest = () =>  {
                 <p>= $298.88</p>
               </div>
               <div className="buttons">
-                <button onClick={() => useStakeToBoardroom} className="btn">
+                <button onClick={() => depositFunc} className="btn">
                   Deposit
                   <i class="bx bx-up-arrow-alt"></i>
                 </button>
                 {
                     withdrawCheck ? 
-                    <button onClick={() => useWithdrawFromBoardroom} className="btn" >
+                    <button onClick={() => withdrawFunc} className="btn" >
                         Withdraw<i class="bx bx-down-arrow-alt"></i>
                     </button> : 
                     <button  className="btn" >
@@ -226,7 +232,7 @@ const Invest = () =>  {
                 }
                 {
                     claimRewardCheck ? 
-                    <button onClick={() => useRedeemOnBoardroom} className="btn2">
+                    <button onClick={() => redeemFunc} className="btn2">
                         Claim Rewards{" "}
                         <img
                           src={bshares}

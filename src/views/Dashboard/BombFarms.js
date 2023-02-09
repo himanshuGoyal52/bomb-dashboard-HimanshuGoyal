@@ -3,6 +3,13 @@ import styled from 'styled-components';
 import bomb_btc from '../../assets/img/bomb-btc-lp-512.png';
 import bshareimg from '../../assets/img/bshare-200x200.png';
 import bshare_bnb from '../../assets/img/bshare-bnb-LP.png';
+import useFetchBombAPR from '../../hooks/useFetchBombAPR';
+import useRedeemFromBomb from '../../hooks/useRedeemFromBomb';
+import useStakedBomb from '../../hooks/useStakedBomb';
+import useStakeToBomb from '../../hooks/useStakeToBomb';
+import useWithdrawFromBomb from '../../hooks/useWithdrawFromBomb';
+import useRedeemFromBtcb from '../../hooks/useRedeemFromBtcb';
+import useTotalValueLocked from '../../hooks/useTotalValueLocked';
 
 const BombFarmContainer = styled.div`
   display: flex;
@@ -29,11 +36,22 @@ const BombFarmContainer = styled.div`
     height: 30px;
     font-size: 0.9em;
     margin: 0px 5px;
+    cursor : pointer;
   }
 `;
 
 
 const BombFarms = () => {
+  let bombARP = (useFetchBombAPR()/100).toFixed(2);
+  let stakedbomb = parseInt(useStakedBomb()._hex,16);
+  let tvlNum = useTotalValueLocked();
+
+  const stakeToBombFunc = useStakeToBomb().onStake;
+  const withdrawFunc = useWithdrawFromBomb().onWithdraw;
+  const redeemFunc = useRedeemFromBomb().onWithdraw;
+  const redeemBTCB = useRedeemFromBtcb().onWithdraw;
+
+
   return (
     <>
         <BombFarmContainer>
@@ -42,7 +60,7 @@ const BombFarms = () => {
                     <h3>Bomb Farms</h3>
                     <p style={{color:'white' , fontSize : '0.8rem'}}>Stake your LP token in our farms to start earning $BSHARE</p>
                 </div>
-                <button onClick={() => console.log("ld")} className="btn">
+                <button onClick={() => stakeToBombFunc} className="btn">
                   Deposit
                   <i class="bx bx-up-arrow-alt"></i>
                 </button>
@@ -64,7 +82,7 @@ const BombFarms = () => {
                       Recommended
                   </span>
               </div>
-              <p style={{color : 'white'}}>TVL : $52521752</p>
+              <p style={{color : 'white'}}>TVL : ${tvlNum}</p>
             </div>
 
             <div
@@ -77,7 +95,7 @@ const BombFarms = () => {
             >
               <div className="returns">
                 <p>Daily Returns:</p>
-                <p style={{ fontSize: "1.4em" }}>45%</p>
+                <p style={{ fontSize: "1.4em" }}>{bombARP}%</p>
               </div>
               <div className="stake">
                 <p>Your Stake: {' '}</p>
@@ -87,9 +105,9 @@ const BombFarms = () => {
                     style={{ height: "25px", width: "25px" }}
                     alt=""
                   />{" "}
-                  45
+                  {stakedbomb}
                 </p>
-                <p>= $1171.62</p>
+                <p>= $0.00</p>
               </div>
               <div className="earned">
                 <p>Earned:</p>
@@ -99,18 +117,18 @@ const BombFarms = () => {
                     style={{ height: "25px", width: "25px" }}
                     alt=""
                   />{" "}
-                  45
+                  4878
                 </p>
-                <p>= $298.88</p>
+                <p>= $0.00</p>
               </div>
               <div className="buttons" style={{display:'flex' , alignItems:'center'}}>
-                <button onClick={() => console.log('45')} className="btn">
+                <button onClick={() => stakeToBombFunc} className="btn">
                   Deposit
                   <i class="bx bx-up-arrow-alt"></i>
                 </button>
                 {
-                    <tr></tr> ? 
-                    <button onClick={() => console.log('45')} className="btn" >
+                    true ? 
+                    <button onClick={() => withdrawFunc} className="btn" >
                         Withdraw<i class="bx bx-down-arrow-alt"></i>
                     </button> :
                     <button  className="btn" >
@@ -119,7 +137,7 @@ const BombFarms = () => {
                 }
                 {
                     true ? 
-                    <button onClick={() => console.log('45')} className="btn">
+                    <button onClick={() => redeemBTCB} className="btn">
                         Claim Rewards{" "}
                         <img
                           src={bshareimg}
@@ -157,7 +175,7 @@ const BombFarms = () => {
                       Recommended
                   </span>
               </div>
-              <p style={{color : 'white'}}>TVL : $525217</p>
+              <p style={{color : 'white'}}>TVL : ${tvlNum}</p>
             </div>
 
             <div
@@ -170,7 +188,7 @@ const BombFarms = () => {
             >
               <div className="returns">
                 <p>Daily Returns:</p>
-                <p style={{ fontSize: "1.4em" }}>45%</p>
+                <p style={{ fontSize: "1.4em" }}>{bombARP}%</p>
               </div>
               <div className="stake">
                 <p>Your Stake: {' '}</p>
@@ -180,9 +198,9 @@ const BombFarms = () => {
                     style={{ height: "25px", width: "25px" }}
                     alt=""
                   />{" "}
-                  45
+                  {stakedbomb}
                 </p>
-                <p>= $1171.62</p>
+                <p>= $0.00</p>
               </div>
               <div className="earned">
                 <p>Earned:</p>
@@ -192,18 +210,18 @@ const BombFarms = () => {
                     style={{ height: "25px", width: "25px" }}
                     alt=""
                   />{" "}
-                  45
+                  48
                 </p>
-                <p>= $298.88</p>
+                <p>= $0.00</p>
               </div>
               <div className="buttons" style={{display:'flex' , alignItems:'center'}}>
-                <button onClick={() => console.log('45')} className="btn">
+                <button onClick={() => stakeToBombFunc} className="btn">
                   Deposit
                   <i class="bx bx-up-arrow-alt"></i>
                 </button>
                 {
                     <tr></tr> ? 
-                    <button onClick={() => console.log('45')} className="btn" >
+                    <button onClick={() => withdrawFunc} className="btn" >
                         Withdraw<i class="bx bx-down-arrow-alt"></i>
                     </button> :
                     <button  className="btn" >
@@ -212,7 +230,7 @@ const BombFarms = () => {
                 }
                 {
                     true ? 
-                    <button onClick={() => console.log('45')} className="btn">
+                    <button onClick={() => redeemFunc} className="btn">
                         Claim Rewards{" "}
                         <img
                           src={bshareimg}
