@@ -44,7 +44,7 @@ const BombFarmContainer = styled.div`
 const BombFarms = () => {
   let bombARP = (useFetchBombAPR()/100).toFixed(2);
   let stakedbomb = parseInt(useStakedBomb()._hex,16);
-  let tvlNum = useTotalValueLocked();
+  let tvlNum = useTotalValueLocked().toFixed(2);
 
   const stakeToBombFunc = useStakeToBomb().onStake;
   const withdrawFunc = useWithdrawFromBomb().onWithdraw;
@@ -117,7 +117,7 @@ const BombFarms = () => {
                     style={{ height: "25px", width: "25px" }}
                     alt=""
                   />{" "}
-                  4878
+                  0.00
                 </p>
                 <p>= $0.00</p>
               </div>
@@ -210,7 +210,7 @@ const BombFarms = () => {
                     style={{ height: "25px", width: "25px" }}
                     alt=""
                   />{" "}
-                  48
+                  {0.00}
                 </p>
                 <p>= $0.00</p>
               </div>

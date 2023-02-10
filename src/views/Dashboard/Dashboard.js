@@ -1,13 +1,14 @@
 import Summary from "./Summary";
 import React from 'react';
 import styled from "styled-components";
-import Back from "../../assets/img/Back.jpg";
+// import Back from "../../assets/img/Back.jpg";
+import Back from '../../assets/img/Group2.png'
 import Invest from "./Invest";
 import BombFarms from "./BombFarms";
 import Bonds from "./Bonds";
 
 const MainContainer = styled.div`
-  height: 100vh;
+  
   background: url(${Back});
   background-position: center;
   background-size: cover;

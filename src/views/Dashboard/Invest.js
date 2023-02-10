@@ -11,6 +11,7 @@ import useRedeemOnBoardroom from '../../hooks/useRedeemOnBoardroom';
 import useClaimRewardCheck from '../../hooks/boardroom/useClaimRewardCheck';
 import bomb from '../../assets/img/bomb-200x200.png';
 import bshares from "../../assets/img/bshare-200x200.png";
+import { nFormatter } from '../../utils/numberFormatter';
 
 const MainContainer = styled.div`
   color: white;
@@ -89,7 +90,7 @@ margin-left: 1em;
 
 const Invest = () =>  {
     /************* Board Room ************/
-    const totalStakedOnBoardroom = parseInt(useTotalStakedOnBoardroom()._hex,16).toFixed(2);
+    const totalStakedOnBoardroom = nFormatter(parseInt(useTotalStakedOnBoardroom()._hex,16).toFixed(2),1);
     const earningsOnBoardroom = parseInt(useEarningsOnBoardroom()._hex,16);
     const StakedBalanceOnBoardroom = parseInt(useStakedBalanceOnBoardroom()._hex,16);
     const arpStatsBoardroom = (useFetchBoardroomAPR()/100).toFixed(2);
@@ -214,7 +215,7 @@ const Invest = () =>  {
                   />{" "}
                   {earningsOnBoardroom}
                 </p>
-                <p>= $298.88</p>
+                <p>= $0.00</p>
               </div>
               <div className="buttons">
                 <button onClick={() => depositFunc} className="btn">

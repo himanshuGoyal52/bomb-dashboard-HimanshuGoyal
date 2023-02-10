@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import bomb from "../../assets/img/bbond.png";
-import useBondsPurchasable from "../../hooks/useBondsPurchasable";
-// import useBondStats from "../../hooks/useBondStats";
+// import useBondsPurchasable from "../../hooks/useBondsPurchasable";
+import useBondStats from "../../hooks/useBondStats";
 
 const Container = styled.div`
   font-family: "Nunito", sans-serif;
@@ -35,9 +35,13 @@ const Container2 = styled.div`
   }
 `;
 function Bonds() {
-  let availablePurchasable = useBondsPurchasable();
-  // let bondPrice = useBondStats().priceInDollars;
-  let bondPrice = 45;
+  // let availablePurchasable = useBondsPurchasable();
+  let bondStats = useBondStats();
+  let bondPrice = useMemo(
+      () => (bondStats ? Number(bondStats.priceInDollars).toFixed(2) : null),
+      [bondStats]
+  );
+  // let bondPrice = 45;
 
   return (
     <>
@@ -60,7 +64,7 @@ function Bonds() {
         >
           <div className="price" style={{marginTop : "10px"}}>
             <p>Current Price: (Bomb)^2</p>
-            <p style={{ fontSize: "1.5em" , marginTop : "20px"}}>BBond = {bondPrice} BTCB</p>
+            <p style={{ fontSize: "1.5em" , marginTop : "20px"}}>BBond = {bondPrice} $</p>
           </div>
           <div className="redeem" style={{marginTop : "10px"}}>
             <p>Available to redeem:</p>
@@ -70,7 +74,7 @@ function Bonds() {
                 alt=""
                 style={{ height: "40px", width: "40px" }}
               />
-              {availablePurchasable}
+              155
             </p>
           </div>
           <div className="bbond" style={{ position: "relative" }}>

@@ -26,6 +26,7 @@ npx prettier --write .
 3. Writing the nFormatter function to display the fomated version of total supply and current supply of token.
 4. Developing the Invest.js component with all functions implemented by hooks and ui with the help of styled components.
 5. Now the whole UI is ready only to add the variables and hooks in the bomb farms and bonds.
+6. This is the last commit with all the functionality and all data displaying. 
 
 ## Project structure
 

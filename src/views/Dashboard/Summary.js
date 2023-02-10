@@ -4,16 +4,9 @@ import useShareStats from '../../hooks/usebShareStats';
 import useBondStats from '../../hooks/useBondStats';
 import useTotalValueLocked from '../../hooks/useTotalValueLocked';
 import useCurrentEpoch from '../../hooks/useCurrentEpoch';
-
-// import useTotalStakedOnBoardroom from '../../hooks/useTotalStakedOnBoardroom';
-// import useEarningsOnBoardroom from '../../hooks/useEarningsOnBoardroom';
-// import useStakedBalanceOnBoardroom from '../../hooks/useStakedBalanceOnBoardroom';
-// import useFetchBoardroomAPR from '../../hooks/useFetchBoardroomAPR';
-// import useWithdrawFromBoardroom from '../../hooks/useWithdrawFromBoardroom';
-
+import useCashPriceInLastTWAP from '../../hooks/useCashPriceInLastTWAP';
 import { nFormatter } from '../../utils/numberFormatter';
 import styled from "styled-components";
-// import useShareStatss from '../../hooks/usetShareStats';
 import bomb from '../../assets/img/bomb-200x200.png';
 import metamask from '../../assets/img/metamask-fox.svg';
 import bshares from "../../assets/img/bshare-200x200.png";
@@ -166,23 +159,24 @@ const Summary =  () => {
         [bShareStats],
     )
     /******************************************************************************************/
-    const bondStats = useBondStats();
-    const priceInDollars_bond = useMemo(
+    let bondStats = useBondStats();
+    let priceInDollars_bond = useMemo(
         () => (bondStats ? Number(bondStats.priceInDollars).toFixed(2) : null),
         [bondStats]
     );
-    const totalSupply_bond = useMemo(
+    let totalSupply_bond = useMemo(
         () => (bondStats ? Number(bondStats.totalSupply).toFixed(2) : null),
         [bondStats],
     );
-    const circulatingSupply_bond = useMemo(
+    let circulatingSupply_bond = useMemo(
         () => (bondStats ? Number(bondStats.circulatingSupply).toFixed(2) : null),
         [bondStats],
     );
     /******************************************************************************************/
-    const currentEpochStats = useCurrentEpoch();
-    const currentEpochNum = parseInt(currentEpochStats._hex , 16);
-    const tvl = useTotalValueLocked().toFixed(2);
+    let currentEpochStats = useCurrentEpoch();
+    let currentEpochNum = parseInt(currentEpochStats._hex , 16);
+    let tvl = useTotalValueLocked().toFixed(2);
+    let lastTwap = (parseInt(useCashPriceInLastTWAP()._hex,16)/1e13).toFixed(2);
 
     /************* Board Room ************/
     // const totalStakedOnBoardroom = parseInt(useTotalStakedOnBoardroom()._hex,16).toFixed(2);
@@ -287,7 +281,7 @@ const Summary =  () => {
             <Stats>
               <p>Live TWAP: <span style={{color : "rgba(0, 232, 162, 1)"}}>1.17</span></p>
               <p>TVL: <span style={{color : "rgba(0, 232, 162, 1)"}}>${tvl}</span></p>
-              <p>Last Epoch TWAP: <span style={{color : "rgba(0, 232, 162, 1)"}}>1.22</span></p>
+              <p>Last Epoch TWAP: <span style={{color : "rgba(0, 232, 162, 1)"}}>{lastTwap}</span></p>
             </Stats>
           </RightSection>
         </Container>
